@@ -7,6 +7,7 @@ import ProjetPACE from './ProjetPACE';
 import Projet3DT from './Projet3DT'
 import ProjetPANEL from './ProjetPANEL';
 import ProjetVOILE from './ProjetVOILE';
+import ProjetHACKATHON from './ProjetHACKATHON';
 
 const components = {
     ProjetJPEG: ProjetJPEG,
@@ -16,7 +17,8 @@ const components = {
     ProjetPACE : ProjetPACE,
     Projet3DT : Projet3DT,
     ProjetPANEL : ProjetPANEL,
-    ProjetVOILE : ProjetVOILE
+    ProjetVOILE : ProjetVOILE,
+    ProjetHACKATHON : ProjetHACKATHON,
 };
 
 const ProjectDetails = () => {

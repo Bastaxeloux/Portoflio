@@ -6,12 +6,38 @@ import PropTypes from 'prop-types';
 // Données des projets
 const technicalProjects = [
     {
+        id: 'ProjetSSL',
+        title: 'SimClr Implémentation + BarlowTwins',
+        description: "We implemented SimClr, the foundation paper of SSL. Realized in Python w/ slurm + Wandb. We also implemented BarlowTwins and compared with DinoV2 and Clip.",
+        image: '/couv_simclr.webp',
+        directLink: '/Rapport_SimCLR.pdf',
+        details: 'Rapport de projet à venir.',
+        order: 1
+    },
+    {
+        id: "ProjetIMA205",
+        title: "Cardiac Pathology Detection using Deep Learning",
+        description: " Private Kaggle Challenge for the Machine Learning course at Télécom Paris. Finished 7/75 students.",
+        image: "/couv_kaggle.webp",
+        directLink: "/ima205_report.html",
+        details: "...",
+        order: 2
+    },
+    {
         id: 'Projet3DT',
         title: 'Segmentation d\'images 3D+T',
         description: 'Implémentation d\'un papier de recherche sur la segmentation d\'images cardiaques en 3D, plus une composante temporelle',
         image: '/couv_3DT.webp',
         details: 'Implémentation d\'un papier de recherche sur la segmentation d\'images cardiaques en 3D, plus une composante temporelle',
-        order: 1
+        order: 3
+    },
+    {
+        id: 'ProjetHACKATHON',
+        title: 'Hackathons',
+        description: 'Retour sur plusieurs compétitions techniques intenses et inoubliables.',
+        image: '/couv_hackathons.webp',
+        details: 'description détaillée',
+        order: 5
     },
     {
         id: 'ProjetJPEG',
@@ -19,7 +45,7 @@ const technicalProjects = [
         description: 'Implémentation d\'un papier de recherche sur la détection de falsification d\'images JPEG',
         image: '/couv_jpeg.webp',
         details: 'description détaillée',
-        order: 3
+        order: 6
     },
     {
         id: 'ProjetTIPE2',
@@ -27,7 +53,7 @@ const technicalProjects = [
         description: 'Etude théorique des réseaux phasés (antenne à balayage de phase) et conception physique d\'une maquette fonctionnelle.',
         image: '/couv_tipe2.webp',
         details: '',
-        order: 6
+        order: 8
     },
     {
         id: 'ProjetPACT',
@@ -35,7 +61,7 @@ const technicalProjects = [
         description: 'Elaboration d\'un prototype de manchette vibrante pour recréer l\'environnement sonore au travers du toucher',
         image: '/couv_pact.webp',
         details: '',
-        order: 7
+        order: 10
     },
     {
         id: 'ProjetTIPE1',
@@ -43,33 +69,34 @@ const technicalProjects = [
         description: 'Réalisation physique d\'un miroir à surface liquide',
         image: '/couv_tipe1.webp',
         details: 'description détaillée',
-        order: 8
+        order: 11
     },
-    {
-        id: 'tech-6',
-        title: 'Coming Soon',
-        description: 'Coming soon coming soon coming soon',
-        image: '/loading.webp',
-        details: 'description détaillée',
-        order: 10
-    },
+    // {
+    //     id: 'ProjetFakeCNN',
+    //     title: 'Fake CNN',
+    //     description: "Generation of Fake Faces with diffusion models and detection of these images among real ones with CNNs architectures",
+    //     image: '/couv_cnn_fake.webp',
+    //     details: 'Projet basé sur un repo GitHub et des courbes de performance WandB.',
+    //     order: 12
+    // },
+
 ];
 
 const otherProjects = [
-    {
-        id: 'ProjetPANEL',
-        title: 'Animation d\'une table ronde sur les métiers de la Data',
-        description: 'Organisateur et animateur  d\'une table ronde sur les métiers de la Data à Télécom Paris devant 220 étudiants',
-        image: '/couv_data_panel.webp',
-        order: 2
-    },
     {
         id: 'ProjetVOILE',
         title: 'La Voile : Une Passion au Long Cours',
         description: 'Retour sur mon parcours en voile, de mes débuts en Bretagne à mes responsabilités en école.',
         image: '/couv_voile.png',
         details: 'Petit historique de cette activité dans ma vie',
-        order: 5
+        order: 4
+    },
+    {
+        id: 'ProjetPANEL',
+        title: 'Animation d\'une table ronde sur les métiers de la Data',
+        description: 'Organisateur et animateur  d\'une table ronde sur les métiers de la Data à Télécom Paris devant 220 étudiants',
+        image: '/couv_data_panel.webp',
+        order: 7
     },
     {
         id: 'ProjetPACE',
@@ -77,7 +104,7 @@ const otherProjects = [
         description: 'Ecriture d\'un ouvrage sur le symbolisme phonétique',
         image: '/couv_pace.webp',
         details: 'Description détaillée du projet 1...',
-        order: 4
+        order: 9
     },
     {
         id: 'tech-6',
@@ -85,7 +112,7 @@ const otherProjects = [
         description: 'Coming soon coming soon coming soon',
         image: '/loading.webp',
         details: 'description détaillée',
-        order: 10
+        order: 12
     },
 ];
 
@@ -93,10 +120,10 @@ const otherProjects = [
 const allProjects = [...technicalProjects, ...otherProjects].sort((a, b) => a.order - b.order);
 
 
-const ProjectCard = ({ project }) => (
-    <Link to={`/projets/${project.id}`} className="block">
+const ProjectCard = ({ project }) => {
+    // Le contenu de la carte est le même dans les deux cas
+    const cardContent = (
         <div className="group transition-all duration-300 cursor-pointer h-full flex flex-col w-full max-w-[22rem] mx-auto">
-            {/* Image du projet */}
             <div className="overflow-hidden rounded-lg border-2 border-gray-200 mb-3">
                 <img 
                     src={project.image} 
@@ -104,8 +131,6 @@ const ProjectCard = ({ project }) => (
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
             </div>
-
-            {/* Contenu du projet */}
             <div className="flex flex-col flex-grow">
                 <h3 className="text-lg font-medium mb-1 text-gray-900">
                     {project.title}
@@ -115,8 +140,22 @@ const ProjectCard = ({ project }) => (
                 </p>
             </div>
         </div>
-    </Link>
-);
+    );
+    // Si un lien direct est spécifié, utiliser une balise <a> pour ouvrir dans un nouvel onglet
+    if (project.directLink) {
+        return (
+            <a href={project.directLink} target="_blank" rel="noopener noreferrer" className="block">
+                {cardContent}
+            </a>
+        );
+    }
+    // Sinon, utiliser le Link de React Router pour la navigation interne
+    return (
+        <Link to={`/projets/${project.id}`} className="block">
+            {cardContent}
+        </Link>
+    );
+};
 
 
 

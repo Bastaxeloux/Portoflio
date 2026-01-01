@@ -4,6 +4,7 @@ import { Menu, X, ArrowLeft } from 'lucide-react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import ProjectsRouter from './pages/projects';
 import CVPage from './pages/CVPage';
+import SmallProjectsPage from './pages/SmallProjectsPage';
 import ScrollToTop from './pages/ScrollToTop';
 import ProjectDetails from './pages/ProjectDetails';
 import DynamicWelcome from './pages/Welcome';
@@ -39,25 +40,32 @@ const HomePage = () => {
       <h1 className="text-4xl font-bold mb-4 text-gray-900">Le Guillouzic Maël</h1>
       <p className="italic text-gray-700 mb-4">mael.leguillouzic@telecom-paris.fr</p>
       <p className="text-lg max-w-xl mb-8 leading-relaxed text-gray-700 text-justify">
-      I’m a student in <strong>AI and Mathematics</strong> at Télécom Paris, deeply curious and passionate about solving complex problems.
-      I’ve been actively involved in student life as the <strong>President of my school’s Student Council</strong>, the sole organization in charge of campus life,
-      which taught me the value of teamwork and leadership and allowed me to contribute to the campus community.
-      Outside of academics, I love sports, <strong>competitive sailing</strong>, exploring <strong>geopolitics</strong>, and participating in <strong>hackathons</strong> or programming competitions.
+      I'm a student in <strong>AI and Applied Mathematics</strong> at Télécom Paris, currently on a gap year pursuing research internships.
+      I'm working at the <strong>Danish Meteorological Institute</strong> on deep learning methods for ocean observation, 
+      and will join <strong>CNRS at École Polytechnique</strong> in March to work on neural network emulators for atmospheric chemistry.
+      Previously, I served as <strong>President of my school's Student Council</strong>, leading a team of 26 and managing campus life.
+      Outside of research, I enjoy <strong>competitive sailing</strong>, kite surfing, and exploring <strong>geopolitics</strong>.
       </p>
 
-      <div className="flex space-x-4 mb-8">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 w-full px-4 sm:px-0">
         <Link
           to="/projets"
-          className="inline-block bg-black text-white font-medium py-3 px-8 rounded-full shadow-md hover:bg-gray-800 hover:scale-105 transform transition-transform duration-300"
+          className="w-full sm:w-auto text-center bg-white text-red-600 border-2 border-red-600 font-medium py-3 px-6 rounded-full shadow-md hover:bg-red-50 hover:scale-105 transform transition-all duration-300"
         >
-          See my projects
+          Main Projects
         </Link>
         <Link
           to="/cv"
-          className="inline-block bg-black text-white font-medium py-3 px-8 rounded-full shadow-md hover:bg-gray-800 hover:scale-105 transform transition-transform duration-300"
+          className="w-full sm:w-auto text-center bg-white text-amber-600 border-2 border-amber-600 font-medium py-3 px-6 rounded-full shadow-md hover:bg-amber-50 hover:scale-105 transform transition-all duration-300"
         >
           CV
         </Link>
+        {/* <Link
+          to="/smallerprojects"
+          className="w-full sm:w-auto text-center bg-white text-blue-600 border-2 border-blue-600 font-medium py-3 px-6 rounded-full shadow-md hover:bg-blue-50 hover:scale-105 transform transition-all duration-300"
+        >
+          Travaux Académiques
+        </Link> */}
       </div>
 
       <div className="flex space-x-4">
@@ -164,6 +172,7 @@ function App() {
             <Route path="/cv" element={<CVPage />} />
             <Route path="/projets" element={<ProjectsRouter />} />
             <Route path="/projets/:id" element={<ProjectDetails />} />
+            <Route path="/smallerprojects" element={<SmallProjectsPage />} />
           </Routes>
         </Layout>
       )}
